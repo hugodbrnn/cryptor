@@ -1,6 +1,5 @@
 use clap::{Parser, Subcommand};
 use crate::io;
-use crate::crypto;
 
 #[derive(Parser)]
 #[command(name = "cryptor", version)]
@@ -56,36 +55,39 @@ pub fn parse_args() -> Args {
 pub fn run(args: Args) -> anyhow::Result<()> {
     match args.command {
         Commands::Encrypt { algo, input, output, password } => {
-            let data = io::read_file(&input)?;
-            match algo.as_str() {
-                "aes" => unimplemented!("aes encrypt waiting for colleague"),
-                "chacha" => unimplemented!("chacha encrypt waiting for colleague"),
-                "xor" => unimplemented!("xor encrypt waiting for colleague"),
-                _ => anyhow::bail!("unknown algo"),
-            }
+            let _data = io::read_file(&input)?;
+            println!(
+                "[TEST] Encrypt | algo={} | input={} | output={} | password={:?}",
+                algo, input, output, password
+            );
+            Ok(())
         }
+
         Commands::Decrypt { algo, input, output, password } => {
-            let data = io::read_file(&input)?;
-            match algo.as_str() {
-                "aes" => unimplemented!("aes decrypt waiting for colleague"),
-                "chacha" => unimplemented!("chacha decrypt waiting for colleague"),
-                "xor" => unimplemented!("xor decrypt waiting for colleague"),
-                _ => anyhow::bail!("unknown algo"),
-            }
+            let _data = io::read_file(&input)?;
+            println!(
+                "[TEST] Decrypt | algo={} | input={} | output={} | password={:?}",
+                algo, input, output, password
+            );
+            Ok(())
         }
+
         Commands::Encode { algo, input, output } => {
-            let data = io::read_file(&input)?;
-            match algo.as_str() {
-                "base64" => unimplemented!("base64 encode waiting for colleague"),
-                _ => anyhow::bail!("unknown algo"),
-            }
+            let _data = io::read_file(&input)?;
+            println!(
+                "[TEST] Encode | algo={} | input={} | output={}",
+                algo, input, output
+            );
+            Ok(())
         }
+
         Commands::Decode { algo, input, output } => {
-            let data = io::read_file(&input)?;
-            match algo.as_str() {
-                "base64" => unimplemented!("base64 decode waiting for colleague"),
-                _ => anyhow::bail!("unknown algo"),
-            }
+            let _data = io::read_file(&input)?;
+            println!(
+                "[TEST] Decode | algo={} | input={} | output={}",
+                algo, input, output
+            );
+            Ok(())
         }
     }
 }
