@@ -1,0 +1,29 @@
+Dossier Confidentiel :
+
+
+Alerte : Paralysie Coordonnée d'Infrastructure Critique
+Chers Officiers et Directeurs,
+
+Le présent rapport fait suite à l'incident survenu à 02h45 locale. Nos systèmes de défense ont été submergés par une offensive de déni de service et d'injection de code massive, d'une sophistication et d'une ampleur sans précédent, ciblant l'épine dorsale de notre infrastructure nationale.
+
+Le constat est le suivant :
+
+Transport Aérien : Les systèmes de contrôle du trafic (ATC) de trois hubs majeurs (zones ALPHA, GAMMA, et KAPPA) sont totalement non-opérationnels. Tous les vols civils et commerciaux sont au sol ou détournés.
+
+Réseaux Ferroviaires : Perturbations graves sur l'axe principal Nord-Sud. Les systèmes de signalisation sont sporadiquement contrôlés par l'attaquant.
+
+Communications : Coupures étendues dans les réseaux gouvernementaux et certains réseaux civils câblés.
+
+Instructions Opérationnelles Immédiates (Dès Réception) :
+
+Isolation (I/O) : TOUTES les unités et les postes de commandement doivent immédiatement isoler leurs systèmes non essentiels du réseau gouvernemental et passer en mode radio chiffré (Plan de Continuité des Communications R-B).
+
+Redondance : Le Colonel Dubois est chargé de l'établissement d'une liaison satellite d'urgence pour le QG de la Sécurité Nationale dans les 30 minutes.
+
+Contention : Aucune tentative de reconnexion ou de récupération logicielle ne doit être effectuée sans mon approbation directe. Nous devons identifier et contenir la source avant de réparer.
+
+La situation est considérée comme une Urgence Numérique de Niveau 4. Le calme, la précision et le strict respect des protocoles sont requis. Le Commandement des Opérations est activé à pleine capacité.
+
+Je demande un rapport de situation consolidé sur le statut d'isolation des systèmes par chaque entité d'ici 04h00 locale.
+
+Commandant Anna Moreau Chef des Opérations de Sécurité Nationale
