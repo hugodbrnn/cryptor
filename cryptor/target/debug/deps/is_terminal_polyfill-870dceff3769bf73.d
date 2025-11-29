@@ -1,0 +1,7 @@
+/mnt/c/Hugo esilv/A4/rust/rust project cryptor/cryptor/target/debug/deps/is_terminal_polyfill-870dceff3769bf73.d: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/is_terminal_polyfill-1.70.2/src/lib.rs
+
+/mnt/c/Hugo esilv/A4/rust/rust project cryptor/cryptor/target/debug/deps/libis_terminal_polyfill-870dceff3769bf73.rlib: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/is_terminal_polyfill-1.70.2/src/lib.rs
+
+/mnt/c/Hugo esilv/A4/rust/rust project cryptor/cryptor/target/debug/deps/libis_terminal_polyfill-870dceff3769bf73.rmeta: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/is_terminal_polyfill-1.70.2/src/lib.rs
+
+/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/is_terminal_polyfill-1.70.2/src/lib.rs:
