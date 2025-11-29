@@ -1,89 +1,115 @@
-Cryptor — Outil de chiffrement en Rust
+# Cryptor — Outil de chiffrement en Rust
 
-Cryptor est un programme en ligne de commande écrit en Rust.
+Cryptor est un programme en ligne de commande écrit en Rust.  
 Il permet de chiffrer, déchiffrer et encoder des fichiers à l’aide d’algorithmes modernes ou pédagogiques.
 
 Le projet propose une architecture modulaire, propre et extensible illustrant plusieurs techniques cryptographiques contemporaines.
 
-Fonctionnalités
+---
+
+## Fonctionnalités
 
 Cryptor prend en charge :
 
-1. Chiffrement
+### 1. Chiffrement
 
-AES-256-GCM
-(sécurisé, standard industriel)
+- **AES-256-GCM**  
+  (sécurisé, standard industriel)
 
-ChaCha20-Poly1305
-(sécurisé, rapide, moderne)
+- **ChaCha20-Poly1305**  
+  (sécurisé, rapide, moderne)
 
-XOR
-(non sécurisé, purely pédagogique)
+- **XOR**  
+  (non sécurisé, purement pédagogique)
 
-2. Déchiffrement
+### 2. Déchiffrement
 
-Inverse exact des modes ci-dessus
+- Inverse exact des modes ci-dessus  
+- Gestion des erreurs (mot de passe incorrect, fichier corrompu…)
 
-Gestion des erreurs (mot de passe incorrect, fichier corrompu…)
+### 3. Base64
 
-3. Base64
+- Encodage  
+- Décodage
 
-Encodage
+---
 
-Décodage
+## Usage
 
-Usage
+Les commandes s’exécutent via :
 
-Toutes les commandes s’utilisent sous la forme :
-
+```bash
 cargo run -- <commande> [options]
 
+```
 Chiffrement AES
+
+```bash
+
 cargo run -- encrypt --algo aes --input input.txt --output out.bin --password exemple
 
+```
 Déchiffrement AES
+```bash
+cargo run -- encrypt --algo aes --input input.txt --output out.bin --password exemple
+```
+Chiffrement ChaCha20
+```bash
 cargo run -- decrypt --algo aes --input out.bin --output result.txt --password exemple
 
-Chiffrement ChaCha20
-cargo run -- encrypt --algo chacha --input input.txt --output out.bin --password secret
-
+```
 Mode XOR
+```bash
 cargo run -- encrypt --algo xor --input input.txt --output out.bin
-
+```
 Encodage Base64
+```
 cargo run -- encode --algo base64 --input input.txt --output encoded.txt
-
+```
 Décodage Base64
+```
 cargo run -- decode --algo base64 --input encoded.txt --output decoded.bin
-
-Format des fichiers chiffrés (AES / ChaCha20)
+```
+----
+## Format des fichiers chiffrés (AES / ChaCha20)
 
 Les fichiers chiffrés suivent le format :
-
+```
 [SALT     : 16 octets]
 [NONCE    : 12 octets]
 [CIPHERTEXT + TAG]
+```
+----
+## Architecture du projet
 
-
-Le salt et le nonce sont générés aléatoirement pour chaque opération.
-
-Architecture du projet
+```
 src/
 ├── main.rs            Point d’entrée du programme
-├── cli.rs             Gestion des commandes et arguments (Clap)
+├── cli.rs             Gestion du parsing des arguments (Clap)
 ├── io.rs              Lecture et écriture de fichiers
-│
+|
 └── crypto/
-    ├── aes.rs         AES-256-GCM
-    ├── chacha.rs      ChaCha20-Poly1305
-    ├── xor.rs         XOR pédagogique
+    ├── aes.rs         Chiffrement AES-256-GCM
+    ├── chacha.rs      Chiffrement ChaCha20-Poly1305
+    ├── xor.rs         Chiffrement XOR (pédagogique)
     ├── base64.rs      Encodage/Décodage Base64
-    └── mod.rs         Regroupe les modules cryptographiques
+    └── mod.rs         Module global regroupant les crypto
+```
+----
+### Notes importantes
 
-Notes
+- Le dossier target/ ne contient que les fichiers compilés, il ne fait pas partie du code source.
 
-Le dossier target/ n’a aucun impact sur le code source : il ne contient que les compilations.
+- Les fichiers .bin sont volontairement illisibles (c’est du binaire).
 
-Les fichiers chiffrés .bin sont volontairement illisibles.
+- Un mot de passe incorrect rend le déchiffrement impossible.
 
-Un mot de passe incorrect empêche tout déchiffrement.
+- AES et ChaCha20 utilisent PBKDF2 + Salt + Nonce pour une sécurité robuste.
+
+
+
+
+
+
+
+
