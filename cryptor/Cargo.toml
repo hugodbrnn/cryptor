@@ -6,3 +6,12 @@ edition = "2024"
 [dependencies]
 clap = { version = "4.5", features = ["derive"] }
 anyhow = "1.0"
+aes-gcm = "0.10"          # or latest compatible
+pbkdf2 = "0.12.2"
+hmac = "0.12"
+sha2 = "0.10"
+rand = "0.8.5"
+chacha20poly1305 = "0.10"
+base64 = "0.21"
+
+         # for OsRng / random bytes
