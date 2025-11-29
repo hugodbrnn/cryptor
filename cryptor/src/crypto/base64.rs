@@ -1,7 +1,10 @@
+use anyhow::Result;
+
 pub fn encode(data: &[u8]) -> String {
-    unimplemented!("Base64 encode not implemented yet");
+    base64::encode(data)
 }
 
-pub fn decode(data: &str) -> anyhow::Result<Vec<u8>> {
-    unimplemented!("Base64 decode not implemented yet");
+pub fn decode(data: &str) -> Result<Vec<u8>> {
+    let bytes = base64::decode(data)?;
+    Ok(bytes)
 }
