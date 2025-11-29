@@ -1,114 +1,89 @@
-## ﻿Cryptor — Outil de chiffrement en Rust
+Cryptor — Outil de chiffrement en Rust
 
 Cryptor est un programme en ligne de commande écrit en Rust.
 Il permet de chiffrer, déchiffrer et encoder des fichiers à l’aide d’algorithmes modernes ou pédagogiques.
 
-Le but du projet est de proposer une architecture propre, modulaire et extensible tout en illustrant l’implémentation de plusieurs techniques cryptographiques.
+Le projet propose une architecture modulaire, propre et extensible illustrant plusieurs techniques cryptographiques contemporaines.
 
 Fonctionnalités
 
 Cryptor prend en charge :
 
-• Chiffrement
+1. Chiffrement
 
-AES-256-GCM (sécurisé, standard industriel)
+AES-256-GCM
+(sécurisé, standard industriel)
 
-ChaCha20-Poly1305 (sécurisé, rapide, moderne)
+ChaCha20-Poly1305
+(sécurisé, rapide, moderne)
 
-XOR (non sécurisé, purement pédagogique)
+XOR
+(non sécurisé, purely pédagogique)
 
-• Déchiffrement
+2. Déchiffrement
 
 Inverse exact des modes ci-dessus
 
-Gestion d’erreurs (mot de passe incorrect, fichier corrompu…)
+Gestion des erreurs (mot de passe incorrect, fichier corrompu…)
 
-• Base64
+3. Base64
 
 Encodage
 
 Décodage
 
-Usage général
+Usage
 
-Toutes les commandes suivent la même structure :
+Toutes les commandes s’utilisent sous la forme :
 
 cargo run -- <commande> [options]
 
-
-Les commandes disponibles sont :
-
-encrypt      Chiffrer un fichier
-decrypt      Déchiffrer un fichier
-encode       Encoder en Base64
-decode       Décoder du Base64
-
-Exemples d’utilisation
 Chiffrement AES
-cargo run -- encrypt --algo aes --input test.txt --output out.bin --password bobo
+cargo run -- encrypt --algo aes --input input.txt --output out.bin --password exemple
 
 Déchiffrement AES
-cargo run -- decrypt --algo aes --input out.bin --output result.txt --password bobo
+cargo run -- decrypt --algo aes --input out.bin --output result.txt --password exemple
 
 Chiffrement ChaCha20
-cargo run -- encrypt --algo chacha --input test.txt --output out.bin --password secret
+cargo run -- encrypt --algo chacha --input input.txt --output out.bin --password secret
 
-XOR (sans mot de passe)
-cargo run -- encrypt --algo xor --input test.txt --output out.bin
+Mode XOR
+cargo run -- encrypt --algo xor --input input.txt --output out.bin
 
-Base64
+Encodage Base64
+cargo run -- encode --algo base64 --input input.txt --output encoded.txt
 
-Encoder :
-
-cargo run -- encode --algo base64 --input test.txt --output encoded.txt
-
-
-Décoder :
-
+Décodage Base64
 cargo run -- decode --algo base64 --input encoded.txt --output decoded.bin
 
-Format des fichiers chiffrés
+Format des fichiers chiffrés (AES / ChaCha20)
 
-Pour AES et ChaCha20, le fichier chiffré est structuré :
+Les fichiers chiffrés suivent le format :
 
-[16 octets → SALT]
-[12 octets → NONCE]
-[ciphertext + tag → données chiffrées]
+[SALT     : 16 octets]
+[NONCE    : 12 octets]
+[CIPHERTEXT + TAG]
 
 
-Ces valeurs aléatoires garantissent sécurité, non-rejeu et unicité des chiffrages.
+Le salt et le nonce sont générés aléatoirement pour chaque opération.
 
-Pour XOR, il s’agit simplement du flux XOR du fichier (méthode non sécurisée).
-
-Architecture du code
+Architecture du projet
 src/
-│
-├── main.rs          Point d'entrée, exécution du CLI
-├── cli.rs           Gestion des commandes (Clap)
-├── io.rs            Lecture / écriture de fichiers
+├── main.rs            Point d’entrée du programme
+├── cli.rs             Gestion des commandes et arguments (Clap)
+├── io.rs              Lecture et écriture de fichiers
 │
 └── crypto/
-    ├── aes.rs       Implémentation AES-256-GCM + PBKDF2
-    ├── chacha.rs    Implémentation ChaCha20-Poly1305 + PBKDF2
-    ├── xor.rs       Chiffrement XOR simple
-    ├── base64.rs    Encodage et décodage Base64
-    └── mod.rs       Regroupement des modules
+    ├── aes.rs         AES-256-GCM
+    ├── chacha.rs      ChaCha20-Poly1305
+    ├── xor.rs         XOR pédagogique
+    ├── base64.rs      Encodage/Décodage Base64
+    └── mod.rs         Regroupe les modules cryptographiques
 
+Notes
 
-AES et ChaCha utilisent PBKDF2-HMAC-SHA256 avec :
+Le dossier target/ n’a aucun impact sur le code source : il ne contient que les compilations.
 
-Salt aléatoire (16 octets)
+Les fichiers chiffrés .bin sont volontairement illisibles.
 
-Nonce aléatoire (12 octets)
-
-100 000 itérations
-
-Clés dérivées de longueur 256 bits
-
-Points importants
-
-Si le mot de passe est incorrect, la décryption échoue volontairement.
-
-Le dossier target/ ne fait pas partie du code (Résultats de compilation uniquement).
-
-Les fichiers out.bin et result.txt ne sont que des exemples.
+Un mot de passe incorrect empêche tout déchiffrement.
