@@ -6,8 +6,9 @@
 ---
 
 ## Fonctionnalités
-
+Le mot de passe pour les crypteurs AES et ChaCha20 : 'bobo'
 Cryptor prend en charge :
+
 
 ### 1. Chiffrement
 
@@ -41,7 +42,7 @@ cargo run -- <commande> [options]
 
 ```
 Chiffrement AES
-Password ='bobo'
+
 
 ```bash
 
