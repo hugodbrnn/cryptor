@@ -1,7 +1,7 @@
 # Cryptor — Outil de chiffrement en Rust
 
 ## Cryptor est un programme écrit en Rust, il permet de chiffrer, déchiffrer et encoder des fichiers.
- - Auteurs : Alexandre Fau (FIN2), Hugo Deberne (DIA3), Zeineb Daly (DIA2)
+ - Auteurs : Alexandre Fau FIN2, Hugo Deberne DIA3, Zeineb Daly DIA2
 
 ---
 
