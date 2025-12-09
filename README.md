@@ -41,6 +41,7 @@ cargo run -- <commande> [options]
 
 ```
 Chiffrement AES
+Password ='bobo'
 
 ```bash
 
